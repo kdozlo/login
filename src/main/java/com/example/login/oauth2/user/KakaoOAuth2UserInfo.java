@@ -1,5 +1,6 @@
 package com.example.login.oauth2.user;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class KakaoOAuth2UserInfo implements OAuth2UserInfo {
@@ -19,20 +20,22 @@ public class KakaoOAuth2UserInfo implements OAuth2UserInfo {
         // attributes 맵의 kakao_account 키의 값에 실제 attributes 맵이 할당되어 있음
         Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
         Map<String, Object> kakaoProfile = (Map<String, Object>) kakaoAccount.get("profile");
-        this.attributes = kakaoProfile;
+        this.attributes = new HashMap<>();
 
         this.id = ((Long) attributes.get("id")).toString();
         this.email = (String) kakaoAccount.get("email");
 
-        this.name = null;
+        this.name = (String) kakaoAccount.get("name");
         this.firstName = null;
         this.lastName = null;
-        this.nickName = (String) attributes.get("nickname");
-        ;
-        this.profileImageUrl = (String) attributes.get("profile_image_url");
+        this.nickName = (String) kakaoProfile.get("nickname");
+
+        this.profileImageUrl = (String) kakaoProfile.get("profile_image_url");
 
         this.attributes.put("id", id);
         this.attributes.put("email", this.email);
+        this.attributes.put("nickname", nickName);
+        this.attributes.put("profile_image_url", profileImageUrl);
     }
 
     @Override

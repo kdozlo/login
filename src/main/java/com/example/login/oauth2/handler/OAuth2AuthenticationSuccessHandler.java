@@ -72,9 +72,10 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             // TODO: DB 저장
             // TODO: 액세스 토큰, 리프레시 토큰 발급
             // TODO: 리프레시 토큰 DB 저장
-            log.info("email={}, name={}, nickname={}, accessToken={}", principal.getUserInfo().getEmail(),
+            log.info("email={}, name={}, nickname={}, profileUrl={}, accessToken={}", principal.getUserInfo().getEmail(),
                     principal.getUserInfo().getName(),
                     principal.getUserInfo().getNickname(),
+                    principal.getUserInfo().getProfileImageUrl(),
                     principal.getUserInfo().getAccessToken()
             );
 
