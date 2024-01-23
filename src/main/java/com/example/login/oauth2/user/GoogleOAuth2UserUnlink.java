@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class GoogleOAuth2UserUnlink implements OAuth2UserUnlink {
 
-    private static  final String URL = "https://oauth2.goolgeapis.com/revoke";
+    private static  final String URL = "https://oauth2.googleapis.com/revoke";
     private final RestTemplate restTemplate;
 
     @Override
